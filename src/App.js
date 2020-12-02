@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Products, Navbar, Cart } from "./components";
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { commerce } from "./lib/commerce";
 
 function App() {
@@ -31,11 +31,19 @@ function App() {
   // console.log("handleAddToCart", cart);
 
   return (
-    <div className="app">
-      <Navbar totalItems={cart.total_items} />
-      {/* <Products products={products} onAddToCard={handleAddToCart} /> */}
-      <Cart cart={cart} />
-    </div>
+    <Router>
+      <div className="app">
+        <Navbar totalItems={cart.total_items} />
+        <Switch>
+          <Route exact path="/">
+            <Products products={products} onAddToCard={handleAddToCart} />
+          </Route>
+          <Route path="/cart">
+            <Cart cart={cart} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
