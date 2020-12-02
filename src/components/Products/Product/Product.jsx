@@ -3,24 +3,48 @@ import {
   Card,
   CardMedia,
   CardContent,
-  CardAction,
-  Typograpy,
-  IconBottom,
+  CardActions,
+  Typography,
+  IconButton,
 } from "@material-ui/core";
-import { AddShopingCart } from "@material-ui/icons";
+import { AddShoppingCart } from "@material-ui/icons";
 
-function Product({ product }) {
+import useStyles from "./styles";
+
+function Product({ product, onAddToCard }) {
+  const classes = useStyles();
+  //console.log("product", product);
+
   return (
     <Card className={classes.root}>
-      <CardMedia className={classes.media} image="" title={product.name} />
+      <CardMedia
+        className={classes.media}
+        image={product.media.source}
+        title={product.name}
+      />
       <CardContent>
         <div className={classes.cardContent}>
-          <Typograpy variant="h5" gutterBottom>
+          <Typography variant="h5" gutterBottom>
             {product.name}
-          </Typograpy>
-          <Typograpy variant="h5">{product.price}</Typograpy>
+          </Typography>
+          <Typography variant="h5">
+            {product.price.formatted_with_symbol}
+          </Typography>
         </div>
+        <Typography
+          dangerouslySetInnerHTML={{ __html: product.description }}
+          variant="body2"
+          color="textSecondary"
+        />
       </CardContent>
+      <CardActions disableSpacing className={classes.cardActions}>
+        <IconButton
+          onClick={() => onAddToCard(product.id, 1)}
+          aria-label="Add to cart"
+        >
+          <AddShoppingCart />
+        </IconButton>
+      </CardActions>
     </Card>
   );
 }
