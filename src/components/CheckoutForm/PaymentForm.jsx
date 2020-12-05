@@ -17,6 +17,7 @@ function PaymentForm({
   shippingData,
   onCaptureCheckout,
   nextStep,
+  timeout,
 }) {
   // console.log("checkoutToken", checkoutToken);
 
@@ -60,6 +61,8 @@ function PaymentForm({
       };
 
       onCaptureCheckout(checkoutToken.id, orderData);
+
+      timeout();
 
       nextStep();
     }
