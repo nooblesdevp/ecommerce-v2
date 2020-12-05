@@ -1,5 +1,11 @@
 import React from "react";
-import { Button, Container, Grid, Typography } from "@material-ui/core";
+import {
+  Button,
+  Container,
+  CssBaseline,
+  Grid,
+  Typography,
+} from "@material-ui/core";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem/CartItem";
 
@@ -72,6 +78,7 @@ function Cart({
 
   return (
     <Container>
+      <CssBaseline />
       <div className={classes.toolbar}>
         <Typography className={classes.title} variant="h4">
           {" "}
