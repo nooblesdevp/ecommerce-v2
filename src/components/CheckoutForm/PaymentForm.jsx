@@ -13,10 +13,10 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 function PaymentForm({
   checkoutToken,
+  nextStep,
   backStep,
   shippingData,
   onCaptureCheckout,
-  nextStep,
   timeout,
 }) {
   // console.log("checkoutToken", checkoutToken);
@@ -24,7 +24,7 @@ function PaymentForm({
   const handleSubmit = async (event, elements, stripe) => {
     event.preventDefault();
 
-    if (!stripe || elements) return;
+    if (!stripe || !elements) return;
 
     const cardElement = elements.getElement(CardElement);
 
