@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Products, Navbar, Cart, Checkout } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { commerce } from "./lib/commerce";
+import { CssBaseline } from "@material-ui/core";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -41,6 +42,7 @@ function App() {
 
   const refreshCart = async () => {
     const newCart = await commerce.cart.refresh();
+
     setCart(newCart);
   };
 
@@ -52,6 +54,7 @@ function App() {
       );
 
       setOrder(incomingOrder);
+      console.log("order", order);
       refreshCart();
     } catch (error) {
       // // console.log('error', error)
@@ -68,7 +71,8 @@ function App() {
 
   return (
     <Router>
-      <div className="app">
+      <div className="app" style={{ display: "flex" }}>
+        {/* <CssBaseline /> */}
         <Navbar totalItems={cart.total_items} />
         <Switch>
           <Route path="/cart">
