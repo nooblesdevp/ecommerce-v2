@@ -28,8 +28,6 @@ function Checkout({ cart, order, onCaptureCheckout, error }) {
   const classes = useStyles();
   const history = useHistory();
 
-  console.log("order", order);
-
   useEffect(() => {
     const generateToken = async () => {
       try {
