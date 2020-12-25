@@ -28,7 +28,12 @@ const Products = ({ products, onAddToCard }) => {
   return (
     <main className={classes.content}>
       <div className={classes.toolbar}></div>
-      <Grid container justify="center" spacing={4}>
+      <Grid
+        container
+        justify="center"
+        spacing={4}
+        style={{ paddingLeft: "20px" }}
+      >
         {products.map((product) => (
           <Grid key={product.id} xs={12} sm={6} md={4} lg={3}>
             <Product product={product} onAddToCard={onAddToCard} />
