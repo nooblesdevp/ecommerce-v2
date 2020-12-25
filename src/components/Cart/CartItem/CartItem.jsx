@@ -14,7 +14,7 @@ function CartItem({ item, handleRemoveFromCart, handleUpdateCartQty }) {
   const classes = useStyles();
 
   return (
-    <Card>
+    <Card style={{ display: "flex", flexDirection: "column" }}>
       <CardMedia
         image={item.media.source}
         alt={item.name}
