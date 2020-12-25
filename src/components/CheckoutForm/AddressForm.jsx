@@ -42,7 +42,7 @@ function AddressForm({ checkoutToken, next }) {
     id: sO.id,
     label: `${sO.description} - (${sO.price.formatted_with_symbol})`,
   }));
-  console.log("shippingOptions", shippingOptions);
+  // console.log("shippingOptions", shippingOptions);
 
   //function getCountries
   const fetchShippingCountries = async (checkoutTokentId) => {
